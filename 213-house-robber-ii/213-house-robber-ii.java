@@ -15,7 +15,7 @@ class Solution {
     public int helper(int nums[],int start,int n,int idx){
         if(n < start)return 0;
         if(n == start)return dp[n][idx] = nums[start];
-        if(dp[n][idx] != -1)return dp[n][idx];
+        if(dp[n][idx] != -1) return dp[n][idx];
         return dp[n][idx] = Math.max(helper(nums,start,n-1,idx),helper(nums,start,n-2,idx) + nums[n]);
     }
 }
