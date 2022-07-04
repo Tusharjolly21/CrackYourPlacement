@@ -4,15 +4,17 @@ class Solution {
         int n = nums.length;
         int[] dp = new int[n];
         Arrays.fill(dp,-1);
-        return solve(n-1,nums,dp);
+        return tabulation(nums,dp,n-1);
     }
-    private int solve(int index,int[] arr,int[] dp){
-        if(index<0) return 0;
-        if(index==0) return arr[0];
-        if(dp[index]!=-1) return dp[index];
-        int pick = arr[index]+solve(index-2,arr,dp);
-        int nonPick = 0+solve(index-1,arr,dp);
-        dp[index] = Integer.max(pick,nonPick);
-        return dp[index];
+    private int tabulation(int[] arr,int[] dp,int n){
+        dp[0] = arr[0];
+        int neg = 0;
+        for(int i = 1;i<arr.length;i++){
+            int pick = arr[i];
+            if(i>1) pick+=dp[i-2];
+            int nonPick = 0+dp[i-1];
+            dp[i] = Math.max(pick,nonPick);
+        }
+        return dp[n];
     }
 }
