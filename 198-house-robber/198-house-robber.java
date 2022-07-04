@@ -9,7 +9,6 @@ class Solution {
     private int solve(int index,int[] arr,int[] dp){
         if(index<0) return 0;
         if(index==0) return arr[0];
-        if(index == 1) return Integer.max(arr[1], arr[0]);
         if(dp[index]!=-1) return dp[index];
         int pick = arr[index]+solve(index-2,arr,dp);
         int nonPick = 0+solve(index-1,arr,dp);
