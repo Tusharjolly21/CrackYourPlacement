@@ -1,16 +1,27 @@
 class Solution {
-    public int lengthOfLIS(int[] nums) {
-        int n = nums.length;
-        int[][] dp=new int[n+1][n+1];
-        for(int i=n-1; i>= 0; i--){
-            for(int prev=i-1; prev >= -1; prev--){
-                int notPick = dp[i+1][prev+1];
-                int pick = -1;
-                if(prev == -1 || nums[i]>nums[prev])
-                    pick = 1 + dp[i+1][i+1];
-                dp[i][prev+1] = Math.max(pick,notPick);
+    public int lengthOfLIS(int[] arr) {
+        List<Integer> al = new ArrayList<>();
+        al.add(arr[0]);
+        int len = 1;
+        for(int i=1; i<arr.length; i++){
+            if(arr[i] > al.get(al.size()-1)){
+                al.add(arr[i]);
+            len++;
+            }else{
+                int j = binSearch(al, arr[i]);
+                al.set(j, arr[i]);
             }
         }
-        return dp[0][0];
-    } 
+        return len;
+    }
+    public int binSearch(List<Integer>al, int val){
+        int lo = 0;
+        int hi = al.size()-1;
+        while(hi > lo){
+            int mid = lo + (hi-lo)/2;
+            if(al.get(mid) < val) lo = mid+1;
+            else hi = mid;
+        }
+        return hi;
+    }
 }
