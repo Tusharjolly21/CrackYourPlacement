@@ -42,7 +42,7 @@ class Solution {
     
     public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
         boolean visited[] = new boolean[V];
-        Arrays.fill(visited,false);
+        // Arrays.fill(visited,false);
         for(int i=0;i<V;i++)
             if(visited[i]==false) 
                 if(checkCycleBFS(adj, i,visited)) 
