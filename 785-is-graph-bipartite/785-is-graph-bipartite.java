@@ -17,17 +17,18 @@ class Solution {
         q.offer(node);
         color[node] = 1;
         while(!q.isEmpty()){
-            int k = q.poll();
-            for(int it : graph[k]){
+            int ele = q.poll();
+            for(int it:graph[ele]){
                 if(color[it] == -1){
                     q.offer(it);
-                    color[it] = 1 - color[k];
-                }
-                else if(color[it] == color[k]){
+                    color[it] = 1-color[ele];
+                 }
+                else if(color[it]==color[ele]){
                     return false;
                 }
             }
         }
         return true;
+        
     }
 }
