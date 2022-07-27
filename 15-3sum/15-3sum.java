@@ -4,7 +4,7 @@ class Solution {
         Arrays.sort(nums);
         int len = nums.length;
         for(int i = 0;i<len-2;i++){
-            if(i==0 ||(i>0 && nums[i]!=nums[i-1])){
+            if(i>0 && nums[i]==nums[i-1])continue;
                 int low = i+1;
                 int high = len-1;
                 int sum = 0-nums[i];
@@ -22,7 +22,6 @@ class Solution {
                     }
                 }
             }
-        }
         return ans;
     }
 }
