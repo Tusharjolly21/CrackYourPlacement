@@ -14,7 +14,6 @@ class Node {
 */
 
 class Solution {
-    /*Making duplicate node(value)*/
     public Node copyRandomList(Node head) {
         if(head==null) return null;
         Node curr = head;
@@ -24,27 +23,22 @@ class Solution {
             curr.next.next = temp;
             curr = temp;
         }
-         /*setting random pointers*/
-    curr = head;
-    while(curr!=null){
-        if(curr.next!=null){
-            curr.next.random = (curr.random!=null)?curr.random.next:null;
-            
-        }
-        curr = curr.next.next;
-    }
-    // setting org next
-    Node org = head;
-            Node copy = head.next;
-            Node temp = copy;
-            while(org!=null){
-                org.next = org.next.next;
-                copy.next = (copy.next!=null)?copy.next.next:copy.next;
-                org = org.next;
-                copy = copy.next;
+        curr = head;
+        while(curr!=null){
+            if(curr.next!=null){
+                curr.next.random = (curr.random!=null)?curr.random.next:null;
             }
-            return temp;
+            curr = curr.next.next;
+        }
+        Node org = head;
+        Node copy = head.next;
+        Node temp = copy;
+        while(org!=null){
+            org.next = org.next.next;
+            copy.next = (copy.next!=null)?copy.next.next:null;
+            org = org.next;
+            copy = copy.next;
+        }
+        return temp;
     }
-   
-    
 }
