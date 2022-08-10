@@ -7,10 +7,9 @@ class MedianFinder {
         maxHeap = new PriorityQueue<>(Collections.reverseOrder());
         minHeap = new PriorityQueue<>();
     }
+    
     public void addNum(int num) {
-        // Add to maxHeap first (Group of smaller numbers)
-        maxHeap.offer(num);
-            // Balance the heaps
+         maxHeap.offer(num);
         minHeap.offer(maxHeap.poll());
         if(minHeap.size()>maxHeap.size())
             maxHeap.offer(minHeap.poll());
@@ -24,7 +23,6 @@ class MedianFinder {
         }
     }
 }
-
 /**
  * Your MedianFinder object will be instantiated and called as such:
  * MedianFinder obj = new MedianFinder();
